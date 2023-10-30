@@ -9,7 +9,7 @@ const CardElement = () => {
     const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {setPassword(e.target.value)}
 
     return (
-        <Card className="flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <Card className="flex justify-center max-w-sm shadow-2xl bg-base-100 m-12">
                 <Card.Body>
                 <Form>
                     <Form.Label title="Email" />
