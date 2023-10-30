@@ -4,9 +4,8 @@ import logo from '/blue-circle-svgrepo-com.svg'
 
 const NavbarElement = () => {
   return (
-    <Navbar className='text-xl normal-case bg-neutral-content'>
-      <img src={logo} alt="Quizify Logo"></img>
-      <Link className="btn text-xl normal-case m-2 primary" to="/">Home</Link>
+    <Navbar className='text-xl normal-case bg-neutral-content fixed top-0 overflow-hidden z-50'>
+      <Link to="/"><img src={logo} alt="Quizify Logo"></img></Link>
         {/* <Link className="btn text-xl normal-case m-2" to="/login">Login</Link> */}
     </Navbar>
   )
