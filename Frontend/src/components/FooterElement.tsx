@@ -16,8 +16,8 @@ const FooterElement = () => {
             </div>
             <div>
                 <Footer.Title>Company</Footer.Title>
-                <Link to='/about-us' className="link link-hover">About us</Link>
-                <Link to='/contact-us' className="link link-hover">Contact</Link>
+                <Link to='/about' className="link link-hover">About us</Link>
+                <Link to='/contact' className="link link-hover">Contact</Link>
             </div>
         </Footer>
     </>

@@ -1,14 +1,16 @@
-import { Hero, Button } from "react-daisyui"
+import { Hero } from "react-daisyui"
+import NavbarElement from "../components/NavbarElement"
+import FooterElement from "../components/FooterElement"
 
 const About = () => {
   return (
-    <>
-        <Hero className="bg-neutral-content">
+    <div className='flex flex-col items-center h-screen justify-between'>
+        <NavbarElement/>
+        <Hero className="mt-20">
         <Hero.Content>
-            <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-            <div>
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
-            <p className="py-6 text-lg text-neutral-content">
+            <div className="bg-neutral p-6 rounded-2xl">
+            <h1 className="text-5xl font-bold text-neutral-content text-center">Optimize your learning</h1>
+            <p className="py-6 text-lg text-neutral-content text-center max-w-lg">
                 Introducing Quizify, your ultimate study companion. Quizify combines cutting-edge technology with personalized learning.
                 Our app empowers you to create your own set of definitions, whether you prefer to input them manually or let our AI work its magic.
                 <br></br><br></br>
@@ -20,7 +22,8 @@ const About = () => {
             </div>
         </Hero.Content>
         </Hero>
-    </>
+        <FooterElement></FooterElement>
+    </div>
   )
 }
 
