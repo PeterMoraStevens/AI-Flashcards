@@ -19,7 +19,7 @@ const Landing = () => {
                 Optimize your studying needs
                 </p>
                 <Tooltip message="Ready to supercharge your learning? (it's free!)" className='mt-2'>
-                    <Link className="btn btn-info-content" to='/'>Get Started</Link>
+                    <Link className="btn btn-info-content" to='/quiz'>Get Started</Link>
                 </Tooltip>
             </div>
           </Hero.Content>
