@@ -7,7 +7,10 @@ export default {
     'node_modules/react-daisyui/dist/**/*.js',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+      'reading': '#778DA9',
+    },},
   },
   // eslint-disable-next-line no-undef
   plugins: [require('daisyui')],

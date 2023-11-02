@@ -3,21 +3,38 @@ import NavbarElement from '../components/NavbarElement'
 import FrequentlyAsked from '../components/FrequentlyAsked'
 import PersonalFeedback from '/undraw_notebook_re_id0r.svg'
 import GuidedGrowth from '/undraw_random_thoughts_re_cob6.svg'
+import { TypeAnimation } from 'react-type-animation'
 import { Hero, Tooltip, Card } from 'react-daisyui'
 import { Link } from 'react-router-dom'
 
 const Landing = () => {
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex flex-col justify-center items-center bg-reading'>
         <NavbarElement></NavbarElement>
         <Hero className='mt-20'>
           <Hero.Overlay className="bg-[url('/undraw_graduation_re_gthn.svg')] bg-contain bg-left-bottom bg-opacity-50"/>
           <Hero.Content className="text-center mt-12 mb-4">
             <div className="max-w-xl bg-neutral rounded-2xl p-4">
                 <h1 className="text-5xl font-bold text-neutral-content">Welcome to Quizify!</h1>
-                <p className="py-6 text-lg text-neutral-content">
-                Optimize your studying needs
-                </p>
+                <TypeAnimation
+                  sequence={[
+                    // Same substring at the start will only be typed out once, initially
+                    'Optimize your studying needs',
+                    2000, // wait 1s before replacing "Mice" with "Hamsters"
+                    'Get personalized feedback',
+                    2000,
+                    'Enjoy guided growth',
+                    2000,
+                    'Completely free! (Free.99)',
+                    2000
+                  ]}
+                  wrapper="span"
+                  speed={25}
+                  style={{ fontSize: '2em', display: 'inline-block' }}
+                  className='text-neutral-content'
+                  repeat={Infinity}
+                />
+                <br></br>
                 <Tooltip message="Ready to supercharge your learning? (it's free!)" className='mt-2'>
                     <Link className="btn btn-info-content" to='/quiz'>Get Started</Link>
                 </Tooltip>
