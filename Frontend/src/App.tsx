@@ -10,6 +10,7 @@ import ScrollTop from './components/ScrollTop';
 import Landing from './routes/Landing';
 import Invalid from './routes/Invalid';
 import About from './routes/About';
+import Quiz from "./routes/Quiz";
 
 // import Secret from "./components/Secret";
 
@@ -32,8 +33,7 @@ const ClerkRoutes = () => {
                 element={
                 <>
                     <SignedIn>
-                        
-                        {/* User page's */}
+                        <Quiz></Quiz>
                     </SignedIn>
                     <SignedOut>
                         <RedirectToSignIn />

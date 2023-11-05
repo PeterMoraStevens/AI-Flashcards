@@ -4,7 +4,6 @@ import logo from '/blue-circle-svgrepo-com.svg'
 
 const FooterElement = () => {
   return (
-    <>
         <Footer className="p-10 bg-neutral-content text-info-content">
             <div>
                 <img src={logo}></img>
@@ -20,7 +19,6 @@ const FooterElement = () => {
                 <Link to='/contact' className="link link-hover">Contact</Link>
             </div>
         </Footer>
-    </>
   )
 }
 
