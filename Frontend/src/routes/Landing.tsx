@@ -36,7 +36,7 @@ const Landing = () => {
                 />
                 <br></br>
                 <Tooltip message="Ready to supercharge your learning? (it's free!)" className='mt-2'>
-                    <Link className="btn btn-info-content" to='/quiz'>Get Started</Link>
+                    <Link className="btn btn-info-content" to='/decks'>Get Started</Link>
                 </Tooltip>
             </div>
           </Hero.Content>

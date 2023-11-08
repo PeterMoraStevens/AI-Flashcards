@@ -10,7 +10,8 @@ import ScrollTop from './components/ScrollTop';
 import Landing from './routes/Landing';
 import Invalid from './routes/Invalid';
 import About from './routes/About';
-import Quiz from "./routes/Quiz";
+import Deck from "./routes/Deck";
+import Decks from "./routes/Decks";
 
 // import Secret from "./components/Secret";
 
@@ -29,11 +30,11 @@ const ClerkRoutes = () => {
                 <Route path="/sign-in/*" element={<SignIn routing="path" path="/sign-in" />}/>
                 <Route path="/sign-up/*" element={<SignUp routing="path" path="/sign-up" />}/>
                 <Route
-                path="/quiz"
+                path="/decks"
                 element={
                 <>
                     <SignedIn>
-                        <Quiz></Quiz>
+                        <Decks></Decks>
                     </SignedIn>
                     <SignedOut>
                         <RedirectToSignIn />
@@ -41,6 +42,17 @@ const ClerkRoutes = () => {
                 </>
                 }
                 />
+                <Route path="/decks/:deckNum" element={
+                    <>
+                        <SignedIn>
+                            <Deck></Deck>
+                        </SignedIn>
+                        <SignedOut>
+                            <RedirectToSignIn></RedirectToSignIn>
+                        </SignedOut>
+                    </>
+                }>
+                </Route>
                 <Route path='about' element={<About/>}></Route>
                 <Route path='*' element={<Invalid/>}></Route>
             </Routes>
@@ -49,7 +61,7 @@ const ClerkRoutes = () => {
 }
 
 const App = () => {
-
+    
     return (
     <BrowserRouter>
         <ScrollTop></ScrollTop>
