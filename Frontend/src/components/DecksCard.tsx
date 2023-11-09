@@ -19,14 +19,14 @@ const DeckCard = ({ title, ind, updateDecks }: DeckCard) => {
     const to = `/decks/${ind}`;
 
     const handleDelete = (deletedDeck: number) => {
-      updateDecks((decks) => decks.filter((deck, i) => i !== deletedDeck));
+      updateDecks((decks) => decks.filter((_deck, i) => i !== deletedDeck));
     }
 
   return (
     <li>
       <Card className="bg-reading rounded-md text-neutral">
         <div className="absolute top-2 right-2">
-          <DeleteDeckButton deckTitle={title} deckId={ind} onDelete={handleDelete} icon={<BsFillTrashFill/>}>
+          <DeleteDeckButton deckId={ind} onDelete={handleDelete} icon={<BsFillTrashFill/>}>
           </DeleteDeckButton>
         </div>
         <div className="absolute top-16 right-2">

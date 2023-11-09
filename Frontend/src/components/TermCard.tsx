@@ -21,7 +21,7 @@ type CardProps = {
 const QuizCard = ({ deck_num, ind, term, category, definition, updateCards }: CardProps) => {
 
   const handleDelete = (deletedCard: number) => {
-    updateCards((cards) => cards.filter((card, i) => i !== deletedCard));
+    updateCards((cards) => cards.filter((_card, i) => i !== deletedCard));
   }
 
   return (

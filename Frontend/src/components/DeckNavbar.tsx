@@ -18,10 +18,6 @@ type props = {
   updateState: React.Dispatch<React.SetStateAction<CardTypes[]>>,
 }
 
-type event = {
-  event: React.SetStateAction<string>
-}
-
 const QuizNavbar = ({ deck_num, updateState }: props) => {
     const ref = useRef<HTMLDialogElement>(null);
     const handleShow = useCallback(() => {

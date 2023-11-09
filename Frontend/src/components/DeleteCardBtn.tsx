@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useRef, useCallback } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
@@ -7,12 +7,11 @@ type btnTypes = {
     deck_num: number,
     cardId: number,
     onDelete: (deletedDeck: number) => void,
-    icon: ReactNode
+    icon: ReactNode,
+    children?: ReactNode
 }
 
 const DeleteCardButton = ({ cardId, onDelete, icon, deck_num }: btnTypes) => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
   const user = useUser().user;
   const user_id = user?.id.toString();
 
@@ -25,7 +24,6 @@ const DeleteCardButton = ({ cardId, onDelete, icon, deck_num }: btnTypes) => {
     })
       .then(() => {
         onDelete(cardId); // Update state or perform any necessary action after deletion
-        setModalOpen(false); // Close the modal after successful deletion
       })
       .catch((err) => {
         console.error(err);
@@ -33,18 +31,25 @@ const DeleteCardButton = ({ cardId, onDelete, icon, deck_num }: btnTypes) => {
       });
   };
 
+  const ref = useRef<HTMLDialogElement>(null);
+  const handleShow = useCallback(() => {
+    ref.current?.showModal();
+  }, [ref]);
+
   return (
     <>
-      <Button onClick={() => setModalOpen(true)} color="error">{icon}</Button>
+      <Button onClick={handleShow} color="error">{icon}</Button>
 
-      <Modal className='text-neutral-content' open={isModalOpen} onClose={() => setModalOpen(false)}>
+      <Modal className='text-neutral-content' ref={ref}>
         <Modal.Header>Confirm Deletion</Modal.Header>
         <Modal.Body>
           Are you sure you want to delete this card?
         </Modal.Body>
         <Modal.Actions>
-          <Button onClick={() => setModalOpen(false)}>Cancel</Button>
+        <form method="dialog">
+          <Button>Cancel</Button>
           <Button onClick={handleDelete} color="error">Delete</Button>
+        </form>
         </Modal.Actions>
       </Modal>
     </>
