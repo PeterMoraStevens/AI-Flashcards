@@ -1,7 +1,7 @@
 import axios from "axios"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useUser } from "@clerk/clerk-react"
-import { Loading } from "react-daisyui"
+import { Loading, Hero } from "react-daisyui"
 import DecksNavbar from "../components/DecksNavbar"
 import FooterElement from "../components/FooterElement"
 import DeckCard from "../components/DecksCard"
@@ -26,21 +26,51 @@ const Decks = ({ decks, updateDecks }: states) => {
             }
         }).then((response) => {
           updateDecks(response.data);
+          setLoading(false)
         }).catch((err) => {
             console.log(err);
+            setLoading(false)
         })
-    }, [user_id, updateDecks])
+    }, [user_id, updateDecks, decks])
 
-    if (!decks) {
+    const [loading, setLoading] = useState(true);
+
+    if (loading) {
       return (
         <>
           <DecksNavbar updateState={updateDecks}></DecksNavbar>
-          <Loading size="lg" variant="infinity" color="primary"/>
+          <div className="min-h-screen mt-24 flex justify-center">
+          <Loading size="lg" variant="infinity" color="neutral"/>
+          </div>
           <FooterElement></FooterElement>
         </>
       )
-    }
+      }
 
+      if (decks.length === 0) {
+        return(
+          <>
+          <DecksNavbar updateState={updateDecks}></DecksNavbar>
+          <div className="min-h-screen mt-32">
+            <div className="flex justify-center">
+              <Hero className="max-w-xl">
+                <Hero.Overlay className="rounded-lg"/>
+                <Hero.Content className="text-center">
+                  <div>
+                    <h1 className="text-5xl font-bold text-neutral-content">No Decks?</h1>
+                    <p className="py-6 text-neutral-content">
+                      Click <b>Add</b> to create your first Deck!
+                    </p>
+                  </div>
+                </Hero.Content>
+              </Hero>
+            </div>
+          </div>
+          <FooterElement></FooterElement>
+          </>
+        )
+      }
+    
   return (
     <>
         <DecksNavbar updateState={updateDecks}></DecksNavbar>
@@ -52,6 +82,7 @@ const Decks = ({ decks, updateDecks }: states) => {
                   key={i}
                   ind={i}
                   title={deck.title}
+                  updateDecks={updateDecks}
                 ></DeckCard>
               ))}
               </ul>

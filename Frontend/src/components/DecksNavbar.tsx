@@ -40,7 +40,7 @@ const QuizNavbar = ({ updateState }: states) => {
       axios.post<CardTypes>('/add_deck', { user_id:user_id, deck:newDeck })
       .then((response: AxiosResponse<CardTypes>)  => {
         const returnedDeck: CardTypes = response.data;
-        updateState(Deck => Deck.concat(returnedDeck));
+        updateState((Decks) => Decks.concat(returnedDeck));
       }).catch((err) => {
         console.log(err);
       })
@@ -55,7 +55,7 @@ const QuizNavbar = ({ updateState }: states) => {
                 </Link>
                 <Link to='/' className='btn btn-neutral'><FaArrowLeft/> Back</Link>
                 <Button onClick={handleShow} className="ml-4"><FaPlus/>Add</Button>
-                <Modal backdrop={true} responsive={true} ref={ref}>
+                <Modal backdrop={true} ref={ref}>
                     <Modal.Header className="font-bold">Create New Deck</Modal.Header>
                     <Modal.Body>
                     <div className="flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
@@ -63,7 +63,7 @@ const QuizNavbar = ({ updateState }: states) => {
                     </div>
                     </Modal.Body>
                     <form method="dialog" className="absolute top-4 right-4">
-                          <Button onClick={handleAddDeck}><FaPlus/> Add</Button>
+                        <Button onClick={handleAddDeck}><FaPlus/> Add</Button>
                     </form>
                 </Modal>
             </div>

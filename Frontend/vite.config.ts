@@ -17,6 +17,18 @@ export default defineConfig({
       '/add_deck': {
         target: 'http://localhost:3001',
         changeOrigin: true,
+      },
+      '/delete_deck': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      '/add_card': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      '/delete_card': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
       }
     }
   },

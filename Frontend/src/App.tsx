@@ -19,12 +19,19 @@ const ClerkRoutes = () => {
     const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
     const navigate = useNavigate();
 
-    type CardTypes = {
+    type DeckTypes = {
         title: string,
         cards: []
-      }
+    }
 
-    const [decks, setDecks] = useState<CardTypes[]>([])
+    type CardTypes = {
+        term: string,
+        category: string,
+        definition: string,
+    }
+
+    const [decks, setDecks] = useState<DeckTypes[]>([])
+    const [cards, setCards] = useState<CardTypes[]>([])
 
     return (
         <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
@@ -48,7 +55,7 @@ const ClerkRoutes = () => {
                 <Route path="/decks/:deckNum" element={
                     <>
                         <SignedIn>
-                            <Deck></Deck>
+                            <Deck deck={cards} updateDeck={setCards}></Deck>
                         </SignedIn>
                         <SignedOut>
                             <RedirectToSignIn></RedirectToSignIn>

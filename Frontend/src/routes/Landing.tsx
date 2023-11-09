@@ -42,7 +42,7 @@ const Landing = () => {
           </Hero.Content>
         </Hero>
 
-        <div className='max-w-3xl mt-32'>
+        <div className='max-w-3xl mt-20 m-4'>
             <Card bordered={false} side="lg">
                 <Card.Image src={PersonalFeedback} alt="presonalized feedback" className='p-8'/>
                 <Card.Body className='bg-neutral rounded-xl max-h-min'>
@@ -54,7 +54,7 @@ const Landing = () => {
                 </Card.Body>
             </Card>
         </div>
-        <div className='max-w-3xl mt-8'>
+        <div className='max-w-3xl m-4'>
             <Card bordered={false} side="lg">
                 <Card.Image src={GuidedGrowth} alt="Guided Growth" className='p-8'/>
                 <Card.Body className='bg-neutral rounded-xl max-h-min'>
