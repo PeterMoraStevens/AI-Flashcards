@@ -12,20 +12,20 @@ mongoose.connect(url)
 })
 
 const userSchema = new mongoose.Schema({
-    user_id: String, // You can define other user properties as needed
-    decks: [
-      {
-        deck_num: Number,
-        cards: [
-          {
-            term: String,
-            category: String,
-            definition: String,
-          },
-        ],
-      },
-    ],
-  },
-  { collection : 'quizify' });
+  user_id: String,
+  decks: [
+    {
+      title: String, // Add a title property
+      cards: [
+        {
+          term: String,
+          category: String,
+          definition: String,
+        },
+      ],
+    },
+  ],
+},
+{ collection : 'quizify' });
 
 module.exports = mongoose.model('User', userSchema)

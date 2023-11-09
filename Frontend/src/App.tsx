@@ -6,6 +6,7 @@ import {
     SignIn,
     SignUp} from "@clerk/clerk-react";
 import { Route, Routes, BrowserRouter, useNavigate } from 'react-router-dom';
+import { useState } from "react";
 import ScrollTop from './components/ScrollTop';
 import Landing from './routes/Landing';
 import Invalid from './routes/Invalid';
@@ -13,15 +14,17 @@ import About from './routes/About';
 import Deck from "./routes/Deck";
 import Decks from "./routes/Decks";
 
-// import Secret from "./components/Secret";
-
-// const SignedInRoutes = () => {
-    
-// }
 
 const ClerkRoutes = () => {
     const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
     const navigate = useNavigate();
+
+    type CardTypes = {
+        title: string,
+        cards: []
+      }
+
+    const [decks, setDecks] = useState<CardTypes[]>([])
 
     return (
         <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
@@ -34,7 +37,7 @@ const ClerkRoutes = () => {
                 element={
                 <>
                     <SignedIn>
-                        <Decks></Decks>
+                        <Decks decks={decks} updateDecks={setDecks}></Decks>
                     </SignedIn>
                     <SignedOut>
                         <RedirectToSignIn />

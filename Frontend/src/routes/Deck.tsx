@@ -1,6 +1,7 @@
 import QuizNavbar from "../components/DeckNavbar";
 import FooterElement from "../components/FooterElement";
 import QuizCard from "../components/TermCard";
+import { Loading } from "react-daisyui";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
@@ -34,13 +35,22 @@ const Quiz = () => {
     }
 }, [deckNum, user_id]);
 
+if (!cards) {
+  return (
+    <>
+      <QuizNavbar></QuizNavbar>
+      <Loading size="lg" variant="infinity" color="primary"/>
+      <FooterElement></FooterElement>
+    </>
+  )
+}
 
   return (
     <div>
       <QuizNavbar></QuizNavbar>
       <div className="min-h-screen mt-24">
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-4 m-4">
-          <ul>
+        <div>
+          <ul className="grid lg:grid-cols-3 sm:grid-cols-2 gap-4 m-4">
             {cards.map((card: CardType, i) => (
               <QuizCard
                 key={i}

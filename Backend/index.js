@@ -75,6 +75,31 @@ app.get('/get_decks/:deckNum', (req, res) => {
     });
 });
 
+
+app.post('/add_deck', (req, res) => {
+    const body = req.body;
+    const user_id = body.user_id;
+    const newDeck = body.deck;
+  
+    console.log(body.deck);
+  
+    if (!user_id) {
+      console.log("Error getting user ID from the body parameters");
+      return res.status(400).send("Bad Request");
+    }
+  
+    User.findOneAndUpdate({ user_id: user_id }, { $push: { decks: { newDeck } } }, { upsert: true, new: true })
+      .then(updatedDeck => {
+        res.json(updatedDeck);
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+      });
+  });
+  
+  
+  
   
 
 const PORT = process.env.PORT || 3001

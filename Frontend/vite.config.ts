@@ -13,6 +13,10 @@ export default defineConfig({
       '/get_all_decks': {
         target: 'http://localhost:3001',
         changeOrigin: true,
+      },
+      '/add_deck': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
       }
     }
   },
